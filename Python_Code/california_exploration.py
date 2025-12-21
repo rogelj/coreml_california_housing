@@ -20,16 +20,16 @@ housing_df = pd.concat([X_full, y], axis=1)
 housing_df.columns
 housing_df.describe()
 
-X = boston_df[['CRIM', 'RM']]
-X.columns = ['Crime', 'Rooms']
+X = housing_df[['MedInc', 'AveRooms']]
+X.columns = ['Income', 'Rooms']
 X.describe()
 
-# Crime       Rooms
-# count  506.000000  506.000000
-# mean     3.593761    6.284634
-# std      8.596783    0.702617
-# min      0.006320    3.561000
-# 25%      0.082045    5.885500
-# 50%      0.256510    6.208500
-# 75%      3.647423    6.623500
-# max     88.976200    8.780000
+# Income         Rooms
+# count  20640.000000  20640.000000
+# mean       3.870671      5.429000
+# std        1.899822      2.474173
+# min        0.499900      0.846154
+# 25%        2.563400      4.440716
+# 50%        3.534800      5.229129
+# 75%        4.743250      6.052381
+# max       15.000100    141.909091
