@@ -1,6 +1,6 @@
 """
-This script lets us explore the values in the Boston prices
-dataset . We will use this information to develop a machine learning
+This script lets us explore the values in the California Housing
+dataset. We will use this information to develop a machine learning
 model to be deployed in an iOS app.
 
 Author: Dr J Rogel
