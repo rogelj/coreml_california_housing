@@ -5,17 +5,20 @@ model to be deployed in an iOS app.
 
 Author: Dr J Rogel
 
-Last modified: 20191009
+Last modified: 20251221
 """
 
 import pandas as pd
-from sklearn import datasets
+from sklearn.datasets import fetch_california_housing
 
-boston = datasets.load_boston()
-boston_df = pd.DataFrame(boston.data)
-boston_df.columns = boston.feature_names
-y = boston.target
+housing = fetch_california_housing(as_frame=True)
+X_full = housing.data
+y = housing.target
 
+housing_df = pd.concat([X_full, y], axis=1)
+
+housing_df.columns
+housing_df.describe()
 
 X = boston_df[['CRIM', 'RM']]
 X.columns = ['Crime', 'Rooms']
