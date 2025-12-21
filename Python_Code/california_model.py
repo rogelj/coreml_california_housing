@@ -1,6 +1,6 @@
 """
 This script implements a machine learning model on the
-Boston house prices dataset to predict the price of a house
+California Housing dataset to predict the price of a house
 given a number of features.
 
 The model is then converted to .mlmodel file to be used in an iOS
@@ -8,7 +8,7 @@ native app.
 
 Author: Dr J Rogel
 
-Last modified: 20191009
+Last modified: 20251221
 """
 
 import coremltools
