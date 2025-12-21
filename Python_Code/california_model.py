@@ -14,12 +14,13 @@ Last modified: 20251221
 import coremltools
 import pandas as pd
 from sklearn import datasets, linear_model
+from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 import numpy as np
 
 
-def glm_boston(X, y):
+def glm_housing(X, y):
     print("Implementing a simple linear regression.")
     lm = linear_model.LinearRegression()
     gml = lm.fit(X, y)
@@ -27,20 +28,19 @@ def glm_boston(X, y):
 
 
 def main():
-    print('Starting up - Loading Boston dataset.')
-    boston = datasets.load_boston()
-    boston_df = pd.DataFrame(boston.data)
-    boston_df.columns = boston.feature_names
-    print(boston_df.columns)
+    print('Starting up - Loading California housing dataset.')
+    housing = fetch_california_housing(as_frame=True)
+    housing_df = pd.concat([X_full, y], axis=1)
 
     print("We now choose the features to be included in our model.")
-    X = boston_df[['CRIM', 'RM']]
-    y = boston.target
+    X = housing_df[['MedInc', 'AveRooms']]
+    X.columns = ['Income', 'Rooms']
+    y = housing.target
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=7)
 
-    my_model = glm_boston(X_train, y_train)
+    my_model = glm_housing(X_train, y_train)
 
     coefs = [my_model.intercept_, my_model.coef_]
 
@@ -65,14 +65,16 @@ def main():
 
     # Convert model to Core ML
     coreml_model = coremltools.converters.sklearn.convert(my_model,
-                                            input_features=["crime", "rooms"],
+                                            input_features=["income", "rooms"],
                                             output_feature_names="price")
 
     # Save Core ML Model
     coreml_model.author = 'JRogel'
     coreml_model.license = 'BSD'
-    coreml_model.short_description = 'Predicts the price of a house in the Boston area (1970s).'
-    coreml_model.save('PriceBoston.mlmodel')
+    coreml_model.short_description = (
+        'Predicts median house prices in California '
+        'based on income and average number of rooms.')
+    coreml_model.save('CaliforniaHousePricer.mlmodel')
     print('Done!')
 
 
