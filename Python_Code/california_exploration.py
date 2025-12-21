@@ -10,6 +10,9 @@ Last modified: 20251221
 
 import pandas as pd
 from sklearn.datasets import fetch_california_housing
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("TkAgg")
 
 housing = fetch_california_housing(as_frame=True)
 X_full = housing.data
@@ -33,3 +36,31 @@ X.describe()
 # 50%        3.534800      5.229129
 # 75%        4.743250      6.052381
 # max       15.000100    141.909091
+
+
+plt.figure(figsize=(8, 10))
+
+# Top plot: Income vs Target
+plt.subplot(2, 1, 1)
+plt.scatter(X['Income'], y, facecolors='none',
+            edgecolors='black',
+            alpha=0.6)
+plt.xlabel('Median Income', fontsize=12)
+plt.ylabel('Median House Value', fontsize=12)
+plt.title('Median Income vs Median House Value', fontsize=14)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+
+# Bottom plot: Rooms vs Target
+plt.subplot(2, 1, 2)
+plt.scatter(X['Rooms'], y, facecolors='none',
+            edgecolors='black',
+            alpha=0.6)
+plt.xlabel('Average Number of Rooms', fontsize=12)
+plt.ylabel('Median House Value', fontsize=12)
+plt.title('Average Number of Rooms vs Median House Value', fontsize=14)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+
+plt.tight_layout()
+plt.show()
