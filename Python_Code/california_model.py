@@ -31,12 +31,12 @@ def main():
     print('Starting up - Loading California housing dataset.')
     housing = fetch_california_housing(as_frame=True)
     X_full = housing.data
+    y = housing.target
     housing_df = pd.concat([X_full, y], axis=1)
 
     print("We now choose the features to be included in our model.")
     X = housing_df[['MedInc', 'AveRooms']]
     X.columns = ['Income', 'Rooms']
-    y = housing.target
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=7)
@@ -61,6 +61,14 @@ def main():
         np.sqrt(metrics.mean_squared_error(y_test, y_pred))))
     print("The r-squared {0}.".format(
         metrics.r2_score(y_test, y_pred)))
+
+    # Sample
+    sample = { 'income': X_test.iloc[0]['Income'],
+                'rooms': X_test.iloc[0]['Rooms'] }
+    ypred_sample = y_pred[0]
+
+    print('A property with {0} is valued ${1:,.2f} dollars'.format(
+        sample, ypred_sample*100000))
 
     print("Let us now convert this model into a Core ML object:")
 
