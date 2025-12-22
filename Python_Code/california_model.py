@@ -30,6 +30,7 @@ def glm_housing(X, y):
 def main():
     print('Starting up - Loading California housing dataset.')
     housing = fetch_california_housing(as_frame=True)
+    X_full = housing.data
     housing_df = pd.concat([X_full, y], axis=1)
 
     print("We now choose the features to be included in our model.")
