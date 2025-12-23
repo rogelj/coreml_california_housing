@@ -82,7 +82,15 @@ def main():
     coreml_model.license = 'BSD'
     coreml_model.short_description = (
         'Predicts median house prices in California '
-        'based on income and average number of rooms.')
+        'based on median income and average number of rooms (1990s)')
+    coreml_model.input_description['income'] = (
+        'Median income in the district (tens of thousands of USD per year)'
+    )
+    coreml_model.input_description['rooms'] = (
+        'Average number of rooms per household')
+    coreml_model.output_description['price'] = (
+        'Predicted median house value (in thousands of USD)'
+    )
     coreml_model.save('CaliforniaHousePricer.mlmodel')
     print('Done!')
 
