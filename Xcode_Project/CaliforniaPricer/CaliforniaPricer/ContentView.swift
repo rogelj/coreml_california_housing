@@ -13,6 +13,10 @@ struct ContentView: View {
             Text("California Pricer").font(.largeTitle)
         }
         .padding()
+        HStack {
+            Text("Median Income (USD)").padding(.trailing, 40)
+            Text("No. of  Rooms").padding(.leading, 40)
+        }
     }
 }
 

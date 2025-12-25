@@ -32,33 +32,33 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Spacer()
                 Text("Boston Pricer")
                     .font(.largeTitle)
                     .multilineTextAlignment(.center)
-                Spacer()
-                Spacer()
-
-                VStack {
-                    Text("Crime").font(.body)
-                    Picker(selection: $pickerCrime, label: Text("")
+                Spacer().frame(height: 30)
+                HStack {
+                    VStack {
+                        Text("Crime").font(.body)
+                        Picker(selection: $pickerCrime, label: Text("")
                         ) {
-                        ForEach(0..<crimeData.count, id: \.self) { ix in
-                            Text("\(self.crimeData[ix], specifier: "%.2f")").tag(ix)
+                            ForEach(0..<crimeData.count, id: \.self) { ix in
+                                Text("\(self.crimeData[ix], specifier: "%.2f")").tag(ix)
+                            }
+                        }
+                        
+                    }
+                    
+                    VStack {
+                        Text("No. of Rooms").font(.body)
+                        Picker(selection: $pickerRoom, label: Text(""))
+                        {
+                            ForEach(0..<roomData.count, id: \.self) { ix in
+                                Text("\(self.roomData[ix])").tag(ix)
+                            }
                         }
                     }
-
                 }
-
-                VStack {
-                    Text("No. of Rooms").font(.body)
-                    Picker(selection: $pickerRoom, label: Text(""))
-                    {
-                        ForEach(0..<roomData.count, id: \.self) { ix in
-                            Text("\(self.roomData[ix])").tag(ix)
-                        }
-                    }
-                }
-
                 Button(action: {
                     self.popUpVisible = true
                 }) {
@@ -113,3 +113,4 @@ struct ContentView_Previews : PreviewProvider {
     }
 }
 #endif
+
