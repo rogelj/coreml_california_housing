@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var popUpVisible: Bool = false
     var body: some View {
         VStack {
             Text("California Pricer").font(.largeTitle)
