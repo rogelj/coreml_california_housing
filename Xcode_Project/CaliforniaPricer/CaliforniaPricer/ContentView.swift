@@ -14,8 +14,12 @@ struct ContentView: View {
         }
         .padding()
         HStack {
-            Text("Median Income (USD)").padding(.trailing, 40)
-            Text("No. of  Rooms").padding(.leading, 40)
+            Text("Median Income (USD)").padding(.trailing, 10)
+            Text("No. of  Rooms").padding(.leading, 10)
+        }
+        .padding(.vertical, 40)
+        Button(action: {}) {
+            Text("Get Prediction")
         }
     }
 }
