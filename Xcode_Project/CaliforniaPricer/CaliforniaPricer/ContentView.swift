@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @State var popUpVisible: Bool = false
     @State var pickerIncome = 0
-      
     @State var pickerRoom = 0
     let incomeData = Array(stride(from:0.05, through: 14, by: 0.5))
     let roomData = Array(2...10)
@@ -19,9 +18,23 @@ struct ContentView: View {
             Text("California Pricer").font(.largeTitle)
         }
         .padding()
-        HStack {
-            Text("Median Income (USD)").padding(.trailing, 10)
-            Text("No. of  Rooms").padding(.leading, 10)
+        HStack(spacing: 40) {
+            VStack(alignment: .leading) {
+                Text("Income ($10k USD)")
+                    .font(.caption)
+                Picker("", selection: .constant(1)) {
+                    Text("1").tag(1)
+                    Text("2").tag(2)
+                }
+            }
+            VStack(alignment: .leading) {
+                Text("No. Rooms")
+                    .font(.caption)
+                Picker("", selection: .constant(1)) {
+                    Text("1").tag(1)
+                    Text("2").tag(2)
+                }
+            }
         }
         .padding(.vertical, 40)
         Button(action: {
