@@ -32,6 +32,7 @@
 		463FC03D2EFD73320090BE44 = {
 			isa = PBXGroup;
 			children = (
+				463FC0552EFECC810090BE44 /* Resources */,
 				463FC0482EFD73320090BE44 /* CaliforniaPricer */,
 				463FC0472EFD73320090BE44 /* Products */,
 			);
@@ -43,6 +44,13 @@
 				463FC0462EFD73320090BE44 /* CaliforniaPricer.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		463FC0552EFECC810090BE44 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
