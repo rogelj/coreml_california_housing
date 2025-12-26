@@ -58,9 +58,9 @@ struct ContentView: View {
             Text("Get Prediction")
         }
         .alert(isPresented: self.$popUpVisible) {
-            Alert(title: Text("Prediction"),
-            message: Text("The values picked are\n Median Income: \(incomeData[pickerIncome])\n Avg No. Rooms: \(roomData[pickerRoom])"),
-                  dismissButton: .default(Text("Cool!"))
+            Alert(title: Text("Property Valuation"),
+            message: Text(predictionMsg()),
+                  dismissButton: .default(Text("OK"))
             )
         }
     }
@@ -73,7 +73,13 @@ struct ContentView: View {
             fatalError("Unexpected runtime error.")
         }
         
-        let price = String(format: "%.2f", priceCalifornia.price*100000)
+        let number = NSNumber(value: priceCalifornia.price * 100000)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.usesGroupingSeparator = true
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        let price = formatter.string(from: number) ?? String(format: "%.2f", number.doubleValue)
         let Msg = "Your property value is\n $\(price)"
         
         return Msg
