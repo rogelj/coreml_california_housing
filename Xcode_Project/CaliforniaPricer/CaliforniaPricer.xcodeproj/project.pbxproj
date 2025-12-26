@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		463FC0572EFED1490090BE44 /* CaliforniaHousePricer.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 463FC0562EFED1490090BE44 /* CaliforniaHousePricer.mlmodel */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		463FC0462EFD73320090BE44 /* CaliforniaPricer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaliforniaPricer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		463FC0562EFED1490090BE44 /* CaliforniaHousePricer.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CaliforniaHousePricer.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -49,6 +54,7 @@
 		463FC0552EFECC810090BE44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				463FC0562EFED1490090BE44 /* CaliforniaHousePricer.mlmodel */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -127,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				463FC0572EFED1490090BE44 /* CaliforniaHousePricer.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
