@@ -2,17 +2,20 @@
 //  ContentView.swift
 //  CaliforniaPricer
 //
-//  Created by J. Rogel on 25/12/2025.
+//  Created by J. Rogel onw 25/12/2025.
 //
 
 import SwiftUI
+import CoreML
 
 struct ContentView: View {
+    let model = CaliforniaHousePricer()
     @State var popUpVisible: Bool = false
     @State var pickerIncome = 0
     @State var pickerRoom = 0
     let incomeData = Array(stride(from:0.05, through: 14, by: 0.5))
     let roomData = Array(2...10)
+    
     var body: some View {
         VStack {
             Text("California Pricer").font(.largeTitle)
@@ -51,6 +54,20 @@ struct ContentView: View {
                   dismissButton: .default(Text("Cool!"))
             )
         }
+    }
+    
+    func predictionMsg() -> String {
+        let income = incomeData[pickerIncome]
+        let rooms = Double(roomData[pickerRoom])
+        
+        guard let priceCalifornia = try? model.prediction(income: income, rooms: rooms) else {
+            fatalError("Unexpected runtime error.")
+        }
+        
+        let price = String(format: "%.2f", priceCalifornia.price*100000)
+        let Msg = "Your property value is\n $\(price)"
+        
+        return Msg
     }
 }
 
