@@ -9,7 +9,16 @@ import SwiftUI
 import CoreML
 
 struct ContentView: View {
-    let model = CaliforniaHousePricer()
+    let model: CaliforniaHousePricer = {
+        do {
+            let config = MLModelConfiguration()
+            return try CaliforniaHousePricer(configuration: config)
+        } catch {
+            print(error)
+            fatalError("Couldn't create CaliforniaHousePricer")
+        }
+    }()
+    
     @State var popUpVisible: Bool = false
     @State var pickerIncome = 0
     @State var pickerRoom = 0
