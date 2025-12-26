@@ -22,17 +22,20 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 Text("Income ($10k USD)")
                     .font(.caption)
-                Picker("", selection: .constant(1)) {
-                    Text("1").tag(1)
-                    Text("2").tag(2)
+                Picker(selection: $pickerIncome,
+                       label: Text("Income")) {
+                    ForEach(incomeData.indices, id: \.self) { ix in
+                        Text("\(incomeData[ix], specifier: "%.2f")").tag(ix)
+                    }
                 }
             }
             VStack(alignment: .leading) {
                 Text("No. Rooms")
                     .font(.caption)
-                Picker("", selection: .constant(1)) {
-                    Text("1").tag(1)
-                    Text("2").tag(2)
+                Picker(selection: $pickerRoom, label: Text("Rooms")) {
+                    ForEach(roomData.indices, id: \.self) { ix in
+                        Text("\(roomData[ix])").tag(ix)
+                    }
                 }
             }
         }
