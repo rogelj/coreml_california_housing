@@ -47,9 +47,8 @@ struct ContentView: View {
         }
         .alert(isPresented: self.$popUpVisible) {
             Alert(title: Text("Prediction"),
-            message: Text("Prediction will be shown here."),
+            message: Text("The values picked are\n Median Income: \(incomeData[pickerIncome])\n Avg No. Rooms: \(roomData[pickerRoom])"),
                   dismissButton: .default(Text("Cool!"))
-                  
             )
         }
     }
